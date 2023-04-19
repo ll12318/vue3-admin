@@ -6,6 +6,7 @@
       justify-content: space-between;
       background: var(--wk-bg);
       color: var(--wk-color-1);
+      border-bottom: 1px solid var(--wk-border-1);
     "
   >
     <span style="display: flex; align-items: center">
