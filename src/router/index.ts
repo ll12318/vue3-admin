@@ -1,17 +1,48 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
 
-const routes = [
+export const routes = [
   {
     path: "/",
     name: "Layout",
     component: () => import("../views/layout/index.vue"),
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: About,
+    meta: {
+      title: "首页",
+      icon: "icon-home",
+      keepAlive: true,
+    },
+    children: [
+      {
+        path: "/home",
+        name: "Home",
+        meta: {
+          title: "首页",
+          icon: "el-icon-s-home",
+          keepAlive: true,
+        },
+        children: [
+          {
+            path: "home1",
+            name: "Home1",
+            component: () => import("../views/Home1.vue"),
+            meta: {
+              title: "Home1",
+              icon: "icon-filesearch",
+              keepAlive: true,
+            },
+          },
+        ],
+      },
+      {
+        path: "about",
+        name: "About",
+        component: () => import("../views/About.vue"),
+        meta: {
+          title: "关于",
+          icon: "icon-filesearch",
+          keepAlive: true,
+        },
+      },
+    ],
   },
 ];
 

@@ -6,16 +6,16 @@ export type ThemeStore = ReturnType<typeof useThemeStore>;
 export const useThemeStore = defineStore({
   id: Names.theme,
   state: () => ({
-    theme: "light",
+    theme: true,
   }),
   getters: {
-    getTheme(): string {
+    getTheme(): boolean {
       return this.theme;
     },
   },
   actions: {
-    setTheme(theme: string): void {
-      this.theme = theme as string;
+    setTheme(theme: boolean): void {
+      this.theme = theme as boolean;
     },
   },
 });
