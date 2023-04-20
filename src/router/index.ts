@@ -21,7 +21,7 @@ export const routes = [
         },
         children: [
           {
-            path: "home1",
+            path: "/home/home1",
             name: "Home1",
             component: () => import("../views/Home1.vue"),
             meta: {
@@ -33,7 +33,7 @@ export const routes = [
         ],
       },
       {
-        path: "about",
+        path: "/about",
         name: "About",
         component: () => import("../views/About.vue"),
         meta: {

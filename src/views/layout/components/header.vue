@@ -4,9 +4,8 @@
       font-size: 14px;
       display: flex;
       justify-content: space-between;
-      background: var(--wk-bg);
-      color: var(--wk-color-1);
-      border-bottom: 1px solid var(--wk-border-1);
+      background: var(--el-bg-color);
+      border-bottom: 1px solid var(--el-border-color);
     "
   >
     <span style="display: flex; align-items: center">
@@ -24,23 +23,8 @@
       ></i>
     </span>
     <div class="toolbar" style="float: right">
-      <i
-        class="iconfont icon-poweroff"
-        style="margin-right: 10px"
-        @click="handleTheme"
-      ></i>
-      <el-dropdown>
-        <el-icon style="margin-right: 8px; margin-top: 1px"
-          ><setting
-        /></el-icon>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>View</el-dropdown-item>
-            <el-dropdown-item>Add</el-dropdown-item>
-            <el-dropdown-item>Delete</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <switch-theme></switch-theme>
+
       <span>Tom</span>
     </div>
   </el-header>
@@ -49,14 +33,14 @@
 <script lang="ts" setup>
 import { useLayoutStore } from "../../../store/layout";
 import { useThemeStore } from "../../../store/theme";
+import SwitchTheme from "./switch_theme.vue";
 const layoutStore = useLayoutStore();
 const themeStore = useThemeStore();
 
-const handleCollapse = (isCollapse: boolean) => {
-  layoutStore.setLayout(isCollapse);
-};
-
 const handleTheme = () => {
   themeStore.setTheme(!themeStore.getTheme);
+};
+const handleCollapse = (isCollapse: boolean) => {
+  layoutStore.setLayout(isCollapse);
 };
 </script>

@@ -20,13 +20,12 @@ const styles = computed(() => {
 </script>
 
 <template>
-  <div :style="styles">
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
 
 <style>
-@import url("https://at.alicdn.com/t/c/font_4025867_r1dfu6as6z.css?spm=a313x.7781069.1998910419.52&file=font_4025867_r1dfu6as6z.css");
+@import url("//at.alicdn.com/t/c/font_4025867_rtyi7du003.css");
+@import url("./views/style/el-dark.css");
 *,
 body {
   margin: 0;
