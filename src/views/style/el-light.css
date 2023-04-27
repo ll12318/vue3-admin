@@ -1,4 +1,8 @@
 html.light {
   color-scheme: light;
+<<<<<<< HEAD
   --el-border-color: #bcbcbc;
+=======
+  --el-border-color: #bcbcbc
+>>>>>>> origin/layout
 }
