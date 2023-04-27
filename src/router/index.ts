@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
+import other from "./other";
 export const routes = [
   {
     path: "/",
@@ -44,12 +44,12 @@ export const routes = [
       },
     ],
   },
+  ...other,
 ];
 
 const router = createRouter({
   // history: createWebHistory(),
   history: createWebHashHistory(),
-
   routes,
 });
 

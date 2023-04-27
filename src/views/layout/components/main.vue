@@ -1,11 +1,13 @@
 <template>
   <el-main>
-    <el-scrollbar>
+    <el-scrollbar ref="scrollbar">
       <router-view />
     </el-scrollbar>
   </el-main>
 </template>
 
 <script lang="ts" setup>
-import Home from "@/views/Home.vue";
+import { ref } from "vue";
+const scrollbar = ref<HTMLElement>();
+console.log(scrollbar);
 </script>
