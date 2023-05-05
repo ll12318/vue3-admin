@@ -25,7 +25,7 @@
     <div class="toolbar" style="float: right">
         <el-popover :visible="visible" placement="bottom" :width="160">
             <el-input
-                    placeholder="请输入内容"
+                    placeholder="输入密码远程构建jenkins"
                     suffix-icon="el-icon-search"
                     type="password"
                     v-model="pwd"
@@ -35,7 +35,7 @@
                     style="width: 100%" />
             <template #reference>
 
-                    <el-button style="margin-right: 10px" type="text" @click="visible = true"
+                    <el-button style="margin-right: 10px" type="text" @click="visible = !visible"
                     ><i class="iconfont icon-send"></i></el-button>
             </template>
         </el-popover>
