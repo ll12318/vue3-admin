@@ -23,6 +23,16 @@
       ></i>
     </span>
     <div class="toolbar" style="float: right">
+        <el-tooltip
+                class="box-item"
+                effect="light"
+                content="Jenkins远程构建"
+                placement="left-start"
+        >
+            <el-button style="margin-right: 10px" type="text" @click="handle_jenkins"
+            ><i class="iconfont icon-send"></i></el-button>
+        </el-tooltip>
+
       <switch-theme></switch-theme>
 
       <span>Tom</span>
@@ -42,5 +52,10 @@ const handleTheme = () => {
 };
 const handleCollapse = (isCollapse: boolean) => {
   layoutStore.setLayout(isCollapse);
+};
+const handle_jenkins = () => {
+  window.open(
+    "http://c.ll12138.icu:9000/job/vue3_admin/build?token=vue3_admin"
+  );
 };
 </script>

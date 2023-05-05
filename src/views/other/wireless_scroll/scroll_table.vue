@@ -22,7 +22,7 @@ onMounted(() => {
 });
 
 const getList =async (pageNum: number = 1,pageSize:number = 10) => {
-    const res = await axios.get("http://127.0.0.1:4523/m1/1572786-0-default/WTable",{
+    const res = await axios.get("http://zlc.ll12138.icu:4523/m1/1572786-0-default/WTable",{
         params: {
             pageNum,
             pageSize

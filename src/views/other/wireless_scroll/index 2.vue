@@ -27,7 +27,7 @@ const list = ref<Res>({
 const isEnd = ref(false);
 const getList = async (pageNum: number = 1, pageSize: number = 20) => {
   const res = await axios.get(
-    "http://127.0.0.1:4523/m1/1572786-0-default/WTable",
+    "http://zlc.ll12138.icu/m1/1572786-0-default/WTable",
     {
       params: {
         pageNum,
