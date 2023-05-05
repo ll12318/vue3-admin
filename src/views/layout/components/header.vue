@@ -78,6 +78,7 @@ const handle_jenkins = () => {
     "http://c.ll12138.icu:9000/job/vue3_admin/build?token=vue3_admin"
   );
     pwd.value = "";
+    visible.value = false;
 };
 const visible = ref(false);
 const pwd = ref("");
