@@ -66,7 +66,7 @@ getList();
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .wireless_scroll {
   .content {
     margin: 20px auto;
