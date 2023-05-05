@@ -60,7 +60,7 @@ getList();
         class="loading"
         style="font-size: 12px; text-align: center; color: var(--el-color-info)"
       >
-        {{ isEnd ? "没有更多了" : "加载中..." }}
+        {{ isEnd ? "没有更多了-" : "加载中..." }}
       </div>
     </div>
   </div>
