@@ -27,10 +27,11 @@ request.interceptors.response.use(
             useUser().setToken('')
         } else  {
             useUser().setToken(''+Date.now())
+            if (response.data.code === 200) {
+                useUser().setToken(''+Date.now())
+            }
         }
-        if (response.data.code === 200) {
-            useUser().setToken(''+Date.now())
-        }
+
         return response;
     },
     (error: any) => {
