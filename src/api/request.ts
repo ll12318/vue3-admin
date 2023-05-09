@@ -23,6 +23,11 @@ request.interceptors.response.use(
     (response: AxiosResponse): AxiosResponse => {
         // 对响应数据做点什么
         console.log(response,'response123')
+        if(response.data.code === '1' && response.data.msg === "未登录或登录超时。请重新登录"){
+            useUser().setToken('')
+        } else  {
+            useUser().setToken(''+Date.now())
+        }
         if (response.data.code === 200) {
             useUser().setToken(''+Date.now())
         }
