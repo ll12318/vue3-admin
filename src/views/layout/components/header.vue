@@ -4,7 +4,7 @@
       font-size: 14px;
       display: flex;
       justify-content: space-between;
-      background: var(--el-bg-color);
+      background-color: var(--el-bg-color);
       border-bottom: 1px solid var(--el-border-color);
     "
   >

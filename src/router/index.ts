@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import other from "./other";
+import system from "./system";
 export const routes = [
   {
     path: "/",
@@ -45,6 +46,7 @@ export const routes = [
     ],
   },
   ...other,
+    ...system
 ];
 
 const router = createRouter({
