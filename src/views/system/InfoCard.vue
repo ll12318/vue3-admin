@@ -108,12 +108,10 @@ onMounted(() => {
 });
 const info: any = ref({});
 watch(info, (newVal, oldVal) => {
-  console.log(newVal);
   handleCup(newVal.cpu);
 });
 const loading = ref(false);
 const handleCup = (data: any) => {
-  console.log(data, "data");
   option &&
     myChart.setOption({
       series: [
@@ -176,7 +174,6 @@ const handleDom = () => {
         }
         sysInfo[key] = obj;
       }
-      console.log(sysInfo);
       info.value = sysInfo;
       loading.value = false;
     })

@@ -9,5 +9,4 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 const scrollbar = ref<HTMLElement>();
-console.log(scrollbar);
 </script>
