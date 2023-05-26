@@ -1,3 +1,5 @@
+import { fa } from "element-plus/es/locale";
+
 export default [
   {
     path: "/nest",
@@ -29,6 +31,39 @@ export default [
           keepAlive: true,
         },
         component: () => import("../views/nest/curd/index.vue"),
+      },
+      {
+        path: "/nest/user",
+        name: "nest_user",
+        meta: {
+          title: "user",
+          // icon: "el-icon-s-home",
+          keepAlive: true,
+        },
+        redirect: "/nest/user",
+        children: [
+          {
+            path: "/nest/user/login",
+            name: "nest_user_login",
+            meta: {
+              title: "login",
+              // icon: "el-icon-s-home",
+              keepAlive: true,
+              hidden: false,
+            },
+            component: () => import("../views/nest/user/login.vue"),
+          },
+          {
+            path: "/nest/user",
+            name: "nest_user_index",
+            meta: {
+              title: "index",
+              // icon: "el-icon-s-home",
+              keepAlive: true,
+            },
+            component: () => import("../views/nest/user/index.vue"),
+          },
+        ],
       },
     ],
   },

@@ -17,6 +17,12 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
+      "/nest2001": {
+        target: "http://localhost:2001/",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/nest2001/, ""),
+      },
     },
   },
 });
