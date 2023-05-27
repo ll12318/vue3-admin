@@ -1,5 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import other from "./other";
+import system from "./system";
+import nest from "./nest";
+import dataVisualization from "./dataVisualization";
 export const routes = [
   {
     path: "/",
@@ -45,6 +48,9 @@ export const routes = [
     ],
   },
   ...other,
+  ...system,
+  ...nest,
+  ...dataVisualization,
 ];
 
 const router = createRouter({

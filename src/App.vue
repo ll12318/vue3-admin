@@ -26,6 +26,7 @@ const styles = computed(() => {
 <style>
 @import url("//at.alicdn.com/t/c/font_4025867_rtyi7du003.css");
 @import url("./views/style/el-dark.css");
+@import url("./views/style/dark.css");
 *,
 body {
   margin: 0;

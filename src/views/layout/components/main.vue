@@ -1,5 +1,5 @@
 <template>
-  <el-main>
+  <el-main class="main-page">
     <el-scrollbar ref="scrollbar">
       <router-view />
     </el-scrollbar>
@@ -9,5 +9,11 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 const scrollbar = ref<HTMLElement>();
-console.log(scrollbar);
 </script>
+
+<style lang="scss" scoped>
+.main-page {
+  background-color: var(--el-bg-main-color);
+  padding: 20px !important;
+}
+</style>
