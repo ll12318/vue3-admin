@@ -43,28 +43,6 @@ export default [
           },
         ],
       },
-      {
-        path: "/vue3",
-        name: "vue3",
-        redirect: "/vue3/ref",
-        meta: {
-          title: "vue3",
-          // icon: "el-icon-s-home",
-          keepAlive: true,
-        },
-        children: [
-          {
-            path: "/vue3/ref",
-            name: "vue3_ref",
-            component: () => import("../views/other/vue3/ref.vue"),
-            meta: {
-              title: "ref",
-              // icon: "icon-filesearch",
-              keepAlive: true,
-            },
-          },
-        ],
-      },
     ],
   },
 ];

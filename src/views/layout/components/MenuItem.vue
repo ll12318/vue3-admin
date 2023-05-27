@@ -7,11 +7,7 @@
     <menu-item v-for="items in item.children" :item="items"></menu-item>
   </el-sub-menu>
 
-  <el-menu-item
-    :index="item.path"
-    v-else-if="!item.meta.hidden"
-    @click="handleRoute"
-  >
+  <el-menu-item :index="item.path" v-else @click="handleRoute">
     <i :class="'iconfont ' + item.meta.icon" style="margin-right: 10px"></i>
     <span slot="title">{{ item.meta.title }}</span>
   </el-menu-item>

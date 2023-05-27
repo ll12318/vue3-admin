@@ -9,12 +9,14 @@ const wireless_scroll = new WirelessScroll({});
 onMounted(() => {
   const el = document.querySelector(".el-scrollbar__wrap");
   wireless_scroll.init(el, () => {
+    console.log("加载更多");
     getList(+list.value.pageNum + 1, +list.value.pageSize);
   });
 });
 onDeactivated(() => {
   wireless_scroll.destroy();
 });
+
 
 const list = ref<Res>({
   list: [],
