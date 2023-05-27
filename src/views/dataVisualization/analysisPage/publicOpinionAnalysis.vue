@@ -142,6 +142,9 @@ onMounted(() => {
   option1 && myChart1.setOption(option1);
 }),
   (option = {
+    tooltip: {
+      trigger: "axis",
+    },
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],

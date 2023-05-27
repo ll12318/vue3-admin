@@ -16,10 +16,12 @@
     ></ContentPublishingRatio>
     <PopularAuthorList style="width: 405px"></PopularAuthorList>
   </div>
+  <ContentPeriodAnalysis style="margin-top: 20px"></ContentPeriodAnalysis>
 </template>
 
 <script lang="ts" setup>
 import PublicOpinionAnalysis from "./publicOpinionAnalysis.vue";
 import ContentPublishingRatio from "./contentPublishingRatio.vue";
 import PopularAuthorList from "./popularAuthorList.vue";
+import ContentPeriodAnalysis from "./contentPeriodAnalysis.vue";
 </script>

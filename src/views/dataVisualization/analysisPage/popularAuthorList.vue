@@ -4,7 +4,7 @@
       <el-table
         :data="data"
         style="width: 100%"
-        max-height="390"
+        max-height="380"
         :header-cell-style="() => ({ background: '#f2f3f8' })"
       >
         <el-table-column
