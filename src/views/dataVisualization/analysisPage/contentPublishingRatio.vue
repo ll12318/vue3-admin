@@ -1,5 +1,9 @@
 <template>
-  <Card title="内容发布比例" style="height: 440px">
+  <Card
+    title="内容发布比例"
+    style="height: 440px"
+    class="ContentPublishingRatio"
+  >
     <template #default>
       <div style="height: 360px" id="ContentPublishingRatioEcharts"></div>
     </template>
@@ -12,18 +16,50 @@
 
 <script lang="ts" setup name="ContentPublishingRatio">
 import Card from "@/components/card.vue";
-import { onMounted } from "vue";
-import * as echarts from "echarts";
-type EChartsOption = echarts.EChartsOption;
-var chartDom;
-var myChart;
-var option: EChartsOption;
-onMounted(() => {
-  chartDom = document.getElementById("ContentPublishingRatioEcharts");
-  myChart = echarts.init(chartDom as HTMLDivElement);
-  option && myChart.setOption(option);
-}),
-  (option = {
+import { computed, ref } from "vue";
+import useEcharts from "../../../hooks/useEcharts";
+import { handleRandomData } from "../../../utils/index";
+import useSetInterval from "../../../hooks/useSetInterval";
+
+// 定义数据类型
+interface IEchartsDataData {
+  video: number[];
+  text: number[];
+  image: number[];
+}
+
+// 模拟数据
+const mockDate = (): Promise<IEchartsDataData> => {
+  const data = {
+    video: handleRandomData(9, 100, 200),
+    text: handleRandomData(9, 100, 200),
+    image: handleRandomData(9, 100, 200),
+  };
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 1000);
+  });
+};
+
+// 定义响应式数据
+const echartsData = ref<IEchartsDataData>({
+  video: [],
+  text: [],
+  image: [],
+});
+
+// 获取数据
+const getEchartsData = async () => {
+  const data = await mockDate();
+  echartsData.value = data;
+};
+
+getEchartsData();
+
+// 定义 Echarts 配置项
+const op = computed(() => {
+  return {
     tooltip: {
       trigger: "axis",
       axisPointer: {
@@ -98,7 +134,7 @@ onMounted(() => {
         emphasis: {
           focus: "series",
         },
-        data: [120, 132, 101, 134, 90, 230, 210, 134, 90],
+        data: echartsData.value.video,
       },
       {
         name: "图文类",
@@ -111,7 +147,7 @@ onMounted(() => {
         emphasis: {
           focus: "series",
         },
-        data: [220, 182, 191, 234, 290, 330, 310, 134, 90],
+        data: echartsData.value.image,
       },
       {
         name: "纯文本",
@@ -124,8 +160,14 @@ onMounted(() => {
         emphasis: {
           focus: "series",
         },
-        data: [150, 232, 201, 154, 190, 330, 410, 134, 90],
+        data: echartsData.value.text,
       },
     ],
-  });
+  };
+});
+
+useSetInterval(getEchartsData, 1000);
+
+// 使用 Echarts 渲染图表
+useEcharts("ContentPublishingRatio", "ContentPublishingRatioEcharts", op);
 </script>

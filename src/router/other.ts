@@ -65,6 +65,16 @@ export default [
           },
         ],
       },
+      {
+        path: "/see_here",
+        name: "see_here",
+        component: () => import("../views/other/seeHere/index.vue"),
+        meta: {
+          title: "看到这里",
+          // icon: "icon-filesearch",
+          keepAlive: true,
+        },
+      },
     ],
   },
 ];

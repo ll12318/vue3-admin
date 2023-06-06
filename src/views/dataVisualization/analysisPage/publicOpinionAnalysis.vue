@@ -33,22 +33,25 @@
 <script lang="ts" setup>
 import Card from "@/components/card.vue";
 import DataCard from "@/components/dataCard.vue";
-import { ref, onMounted, Ref } from "vue";
-import * as echarts from "echarts";
+import { ref, computed, Ref, onMounted, onUnmounted } from "vue";
+import useEcharts from "../../../hooks/useEcharts";
+import { handleRandomData } from "../../../utils/index";
+import useSetInterval from "../../../hooks/useSetInterval";
 
-type EChartsOption = echarts.EChartsOption;
-
-var chartDom;
-var myChart;
-var option: EChartsOption;
+// 定义卡片数据类型
 type CardData = {
   id: number;
   title: string;
   value: string;
   trend: string;
   color: string;
+  opt?: any;
 };
 
+// 定义响应式数据
+const echartsData = ref<any[]>([]);
+
+// 定义卡片数据
 const cardData: Ref<CardData[]> = ref([
   {
     id: 1,
@@ -80,89 +83,183 @@ const cardData: Ref<CardData[]> = ref([
   },
 ]);
 
-const option1 = {
-  tooltip: {
-    trigger: "item",
-  },
-  legend: {
-    top: "15%",
-    left: "60%",
-    // 文字大小
-    textStyle: {
-      fontSize: 12,
-      fontWeight: "400",
-    },
-    icon: "circle",
+// 模拟数据
+const mockData = (): Promise<number[][]> => {
+  const data: number[][] = [];
+  cardData.value.forEach(() => {
+    data.push(handleRandomData(7, 1000, 2000));
+  });
+  data[2] = handleRandomData(3, 1000, 2000);
 
-    //圆圈大小
-    itemWidth: 8,
-  },
-  series: [
-    {
-      // name: "Access From",
-      type: "pie",
-      radius: ["35%", "50%"],
-      avoidLabelOverlap: false,
-      //饼图位置
-      center: ["30%", "50%"],
-      //饼图大小
-      label: {
-        show: false,
-        position: "center",
-      },
-      emphasis: {
-        label: {
-          show: false,
-          // 位置
-          fontSize: 12,
-          fontWeight: "400",
-        },
-      },
-      labelLine: {
-        show: false,
-      },
-      data: [
-        { value: 1048, name: "纯文本" },
-        { value: 735, name: "图文类" },
-        { value: 580, name: "视频类" },
-      ],
-    },
-  ],
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 1000);
+  });
 };
-onMounted(() => {
-  for (let i = 0; i < cardData.value.length; i++) {
-    // 如果id为1的话，跳过循环
-    if (cardData.value[i].id === 3) continue;
-    chartDom = document.getElementById("main" + cardData.value[i].id);
-    myChart = echarts.init(chartDom as HTMLDivElement);
-    option && myChart.setOption(option);
-  }
-  const chartDom1 = document.getElementById("main3");
-  const myChart1 = echarts.init(chartDom1 as HTMLDivElement);
-  option1 && myChart1.setOption(option1);
-}),
-  (option = {
+
+// 计算属性
+const op3 = computed(() => {
+  return {
     tooltip: {
-      trigger: "axis",
+      trigger: "item",
     },
-    xAxis: {
-      type: "category",
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      show: false,
-    },
-    yAxis: {
-      type: "value",
-      show: false,
+    legend: {
+      top: "15%",
+      left: "60%",
+      // 文字大小
+      textStyle: {
+        fontSize: 12,
+        fontWeight: "400",
+      },
+      icon: "circle",
+
+      //圆圈大小
+      itemWidth: 8,
     },
     series: [
       {
-        data: [700, 932, 901, 500, 1290, 800, 1320],
-        type: "line",
-        smooth: true,
-        symbol: "none",
+        // name: "Access From",
+        type: "pie",
+        radius: ["35%", "50%"],
+        avoidLabelOverlap: false,
+        //饼图位置
+        center: ["30%", "50%"],
+        //饼图大小
+        label: {
+          show: false,
+          position: "center",
+        },
+        emphasis: {
+          label: {
+            show: false,
+            // 位置
+            fontSize: 12,
+            fontWeight: "400",
+          },
+        },
+        labelLine: {
+          show: false,
+        },
+        data: [
+          { value: echartsData.value[2]?.[0], name: "纯文本" },
+          { value: echartsData.value[2]?.[1], name: "图文类" },
+          { value: echartsData.value[2]?.[2], name: "视频类" },
+        ],
       },
     ],
+  };
+});
+
+const op1 = computed(() => ({
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    show: false,
+  },
+  yAxis: {
+    type: "value",
+    show: false,
+  },
+  series: [
+    {
+      data: echartsData.value[0],
+      type: "line",
+      smooth: true,
+      symbol: "none",
+    },
+  ],
+}));
+
+const op2 = computed(() => ({
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    show: false,
+  },
+  yAxis: {
+    type: "value",
+    show: false,
+  },
+  series: [
+    {
+      data: echartsData.value[1],
+      type: "line",
+      smooth: true,
+      symbol: "none",
+    },
+  ],
+}));
+
+const op4 = computed(() => ({
+  tooltip: {
+    trigger: "axis",
+  },
+  xAxis: {
+    type: "category",
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    show: false,
+  },
+  yAxis: {
+    type: "value",
+    show: false,
+  },
+  series: [
+    {
+      data: echartsData.value[3],
+      type: "line",
+      smooth: true,
+      symbol: "none",
+    },
+  ],
+}));
+
+// 获取echarts数据
+const getEchartsData = () => {
+  mockData().then((res) => {
+    echartsData.value = res;
   });
+};
+
+// 处理echarts选项
+const handleOption = (index: number) => {
+  switch (index) {
+    case 0:
+      return op1;
+    case 1:
+      return op2;
+    case 2:
+      return op3;
+    case 3:
+      return op4;
+  }
+};
+
+// 遍历卡片数据，渲染echarts
+for (let i = 0; i < cardData.value.length; i++) {
+  // 如果id为1的话，跳过循环
+  if (cardData.value[i].id === 3) continue;
+  useEcharts(
+    "publicOpinionAnalysis",
+    "main" + cardData.value[i].id,
+    handleOption(i)
+  );
+}
+
+// 渲染第三个echarts
+useEcharts("publicOpinionAnalysis", "main" + 3, op3);
+
+// 定时器
+useSetInterval(getEchartsData, 1000);
+
+// 获取echarts数据
+getEchartsData();
 </script>
 
 <style lang="scss" scoped>

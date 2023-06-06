@@ -3,6 +3,7 @@ import other from "./other";
 import system from "./system";
 import nest from "./nest";
 import dataVisualization from "./dataVisualization";
+import css from "./css";
 export const routes = [
   {
     path: "/",
@@ -51,6 +52,7 @@ export const routes = [
   ...system,
   ...nest,
   ...dataVisualization,
+  ...css,
 ];
 
 const router = createRouter({

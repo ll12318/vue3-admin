@@ -12,7 +12,7 @@
   <PublicOpinionAnalysis style="margin-top: 20px"></PublicOpinionAnalysis>
   <div style="margin-top: 20px; display: flex">
     <ContentPublishingRatio
-      style="flex: 1; margin-right: 20px"
+      style="width: 100%; margin-right: 20px"
     ></ContentPublishingRatio>
     <PopularAuthorList style="width: 405px"></PopularAuthorList>
   </div>

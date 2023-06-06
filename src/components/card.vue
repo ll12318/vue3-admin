@@ -30,9 +30,7 @@ const props = defineProps({
   },
 });
 
-const test = (slots: any) => {
-  console.log(slots);
-};
+const test = (slots: any) => {};
 </script>
 
 <style lang="scss" scoped>
@@ -58,6 +56,8 @@ const test = (slots: any) => {
     .title {
       font-size: 16px;
       font-weight: 600;
+      cursor: pointer;
+      user-select: none;
     }
     .more {
       font-size: 12px;

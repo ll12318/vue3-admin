@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useThemeStore } from "./store/theme";
+import useCheckUpdates from "./hooks/useCheckUpdates";
 const themeStore = useThemeStore();
+useCheckUpdates();
 const light = {
   "--wk-bg": "#fff",
   "--wk-color-1": "#000",

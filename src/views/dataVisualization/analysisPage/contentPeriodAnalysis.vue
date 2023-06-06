@@ -1,5 +1,5 @@
 <template>
-  <Card title="内容时段分析">
+  <Card title="内容时段分析" class="ContentPeriodAnalysis">
     <template #default>
       <div style="height: 400px" id="ContentPeriodAnalysisEcharts"></div
     ></template>
@@ -11,29 +11,12 @@
 
 <script lang="ts" setup name="ContentPeriodAnalysis">
 import Card from "@/components/card.vue";
-import * as echarts from "echarts";
-import { onMounted } from "vue";
-
-type EChartsOption = echarts.EChartsOption;
-
-var chartDom;
-var myChart;
-var option: EChartsOption;
-// 生成9条随机数据，10 到99 之间
-function handleRandomData() {
-  let arr = [];
-  for (let i = 0; i < 9; i++) {
-    arr.push(Math.floor(Math.random() * 90 + 10));
-  }
-  return arr;
-}
-
-onMounted(() => {
-  chartDom = document.getElementById("ContentPeriodAnalysisEcharts")!;
-  myChart = echarts.init(chartDom);
-  option && myChart.setOption(option);
-}),
-  (option = {
+import useEcharts from "../../../hooks/useEcharts";
+import { computed, ref, Ref } from "vue";
+import { handleRandomData } from "../../../utils/index";
+import useSetInterval from "../../../hooks/useSetInterval";
+const op = computed(() => {
+  return {
     legend: {
       data: ["视频类", "图文类", "纯文本"],
       bottom: 0,
@@ -51,7 +34,6 @@ onMounted(() => {
     // 提示框
     tooltip: {
       trigger: "axis",
-      // 单位
     },
 
     xAxis: {
@@ -67,7 +49,7 @@ onMounted(() => {
         "20:00",
         "22:00",
       ],
-      // 折线从开始位置出现
+      // 折线位置从开始出现
       boundaryGap: false,
     },
     yAxis: {
@@ -80,25 +62,60 @@ onMounted(() => {
     series: [
       {
         name: "视频类",
-        data: handleRandomData(),
+        data: echartsData.value.a,
         type: "line",
         smooth: true,
         symbol: "none", // 去掉点
       },
       {
         name: "图文类",
-        data: handleRandomData(),
+        data: echartsData.value.b,
         type: "line",
         smooth: true,
         symbol: "none", // 去掉点
       },
       {
         name: "纯文本",
-        data: handleRandomData(),
+        data: echartsData.value.c,
         type: "line",
         smooth: true,
         symbol: "none", // 去掉点
       },
     ],
+  };
+});
+
+interface IEchartsData {
+  a: number[];
+  b: number[];
+  c: number[];
+}
+const mockDate = async (): Promise<IEchartsData> => {
+  const res = {
+    a: handleRandomData(9, 10, 40),
+    b: handleRandomData(9, 10, 40),
+    c: handleRandomData(9, 10, 40),
+  };
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(res);
+    }, 10);
   });
+};
+
+const echartsData: Ref<IEchartsData> = ref({
+  a: [],
+  b: [],
+  c: [],
+});
+
+const getEchartsData = async () => {
+  const res = await mockDate();
+  echartsData.value = res;
+};
+getEchartsData();
+
+useSetInterval(getEchartsData, 1000);
+
+useEcharts("ContentPeriodAnalysis", "ContentPeriodAnalysisEcharts", op);
 </script>

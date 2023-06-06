@@ -21,3 +21,15 @@ export function formatDateTime(
 
   return formattedDateTime;
 }
+// 生成9条随机数据，10到40之间
+export const handleRandomData = (
+  len: number,
+  start: number,
+  last: number
+): number[] => {
+  const res = [];
+  for (let i = 0; i < len; i++) {
+    res.push(Math.floor(Math.random() * (last - start) + start));
+  }
+  return res;
+};

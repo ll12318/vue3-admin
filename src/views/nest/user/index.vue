@@ -112,7 +112,6 @@ const dialogOpt = ref({
 });
 
 const userInfo = useUser();
-console.log(userInfo.userInfo);
 
 const getUserList = debounce(async () => {
   const res = await apiGetUserList(
