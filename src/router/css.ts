@@ -10,7 +10,7 @@ export default [
     component: () => import("../views/layout/index.vue"),
     children: [
       {
-        path: "/flex1",
+        path: "/css/flex1",
         name: "flex1",
         meta: {
           title: "flex1",
@@ -18,6 +18,27 @@ export default [
           keepAlive: true,
         },
         component: () => import("../views/css/flex1/index.vue"),
+      },
+      {
+        path: "/css/scss",
+        name: "scss",
+        meta: {
+          title: "scss",
+          // icon: "el-icon-s-home",
+          keepAlive: true,
+        },
+        children: [
+          {
+            path: "/css/scss/color",
+            name: "颜色变淡",
+            meta: {
+              title: "scss1",
+              // icon: "el-icon-s-home",
+              keepAlive: true,
+            },
+            component: () => import("../views/css/scss/fadeInColor.vue"),
+          },
+        ],
       },
     ],
   },
