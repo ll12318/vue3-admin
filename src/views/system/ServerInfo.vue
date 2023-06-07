@@ -1,10 +1,10 @@
 <template>
-  ServerInfo
-  <info-card></info-card>
+  <div class="systemInfo">
+    ServerInfo
+    <info-card></info-card>
+  </div>
 </template>
 <script lang="ts" setup>
 import InfoCard from "./InfoCard.vue";
 </script>
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

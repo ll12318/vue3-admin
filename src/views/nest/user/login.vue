@@ -1,34 +1,36 @@
 <template>
-  <div class="login-container">
-    <el-card class="login-card" shadow="hover">
-      <h1 class="login-title">Login</h1>
-      <el-form
-        :model="formData"
-        :rules="rules"
-        ref="loginForm"
-        label-width="80px"
-        class="login-form"
-      >
-        <el-form-item label="Username" prop="username">
-          <el-input
-            v-model="formData.username"
-            placeholder="Please enter your username"
-          ></el-input>
-        </el-form-item>
-        <el-form-item label="Password" prop="password">
-          <el-input
-            type="password"
-            v-model="formData.password"
-            placeholder="Please enter your password"
-          ></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="submitForm" :loading="loading"
-            >Login</el-button
-          >
-        </el-form-item>
-      </el-form>
-    </el-card>
+  <div class="nest_user_login">
+    <div class="login-container">
+      <el-card class="login-card" shadow="hover">
+        <h1 class="login-title">Login</h1>
+        <el-form
+          :model="formData"
+          :rules="rules"
+          ref="loginForm"
+          label-width="80px"
+          class="login-form"
+        >
+          <el-form-item label="Username" prop="username">
+            <el-input
+              v-model="formData.username"
+              placeholder="Please enter your username"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="Password" prop="password">
+            <el-input
+              type="password"
+              v-model="formData.password"
+              placeholder="Please enter your password"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="submitForm" :loading="loading"
+              >Login</el-button
+            >
+          </el-form-item>
+        </el-form>
+      </el-card>
+    </div>
   </div>
 </template>
 

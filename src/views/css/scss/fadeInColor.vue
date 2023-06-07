@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="scss">
     <Card title="颜色变淡scss" :animation="false">
       <template #default>
         <div class="fadeInColor">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nest_user_index">
     <el-row style="margin: 10px">
       <el-col :span="8">
         <el-input

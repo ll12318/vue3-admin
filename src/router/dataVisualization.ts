@@ -10,8 +10,8 @@ export default [
     component: () => import("../views/layout/index.vue"),
     children: [
       {
-        path: "/analysisPage",
-        name: "analysisPage",
+        path: "/analysis_page",
+        name: "analysis_page",
         meta: {
           title: "分析页",
           // icon: "el-icon-s-home",
