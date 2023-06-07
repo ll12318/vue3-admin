@@ -30,9 +30,9 @@ export default [
         children: [
           {
             path: "/css/scss/color",
-            name: "颜色变淡",
+            name: "color",
             meta: {
-              title: "scss1",
+              title: "颜色变淡",
               // icon: "el-icon-s-home",
               keepAlive: true,
             },
