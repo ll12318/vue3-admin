@@ -30,6 +30,7 @@
       <img :src="imgUrl" />
     </div>
   </el-dialog>
+  <SeachBar></SeachBar>
 </template>
 
 <script lang="ts" setup>
@@ -41,6 +42,7 @@ import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
 import { useUser } from "../../store/user";
 import { ElNotification } from "element-plus";
 import { login, getImgUrl, getServerInfo } from "../../api";
+import SeachBar from "./components/seachBar.vue";
 
 const item = {
   date: "2016-05-02",
