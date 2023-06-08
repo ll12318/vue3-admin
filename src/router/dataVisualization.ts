@@ -11,6 +11,7 @@ export default [
     children: [
       {
         path: "/analysis_page",
+        isPage: true,
         name: "analysis_page",
         meta: {
           title: "分析页",

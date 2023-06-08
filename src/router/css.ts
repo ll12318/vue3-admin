@@ -18,6 +18,7 @@ export default [
           keepAlive: true,
         },
         component: () => import("../views/css/flex1/index.vue"),
+        isPage: true,
       },
       {
         path: "/css/scss",
@@ -36,6 +37,7 @@ export default [
               // icon: "el-icon-s-home",
               keepAlive: true,
             },
+            isPage: true,
             component: () => import("../views/css/scss/fadeInColor.vue"),
           },
         ],

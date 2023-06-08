@@ -27,6 +27,7 @@ export const routes = [
           {
             path: "/home/home1",
             name: "Home1",
+            isPage: true,
             component: () => import("../views/Home1.vue"),
             meta: {
               title: "Home1",

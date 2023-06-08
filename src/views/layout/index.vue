@@ -30,26 +30,28 @@
       <img :src="imgUrl" />
     </div>
   </el-dialog>
-  <SeachBar></SeachBar>
+  <SeachBar v-if="layoutStore.getSearch"></SeachBar>
 </template>
 
 <script lang="ts" setup>
 import Sidebar from "./components/sidebar.vue";
 import Header from "./components/header.vue";
 import Main from "./components/main.vue";
-import { ref, watch } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { Menu as IconMenu, Message, Setting } from "@element-plus/icons-vue";
 import { useUser } from "../../store/user";
 import { ElNotification } from "element-plus";
 import { login, getImgUrl, getServerInfo } from "../../api";
 import SeachBar from "./components/seachBar.vue";
+import { useLayoutStore } from "../../store/layout";
+
+const layoutStore = useLayoutStore();
 
 const item = {
   date: "2016-05-02",
   name: "Tom",
   address: "No. 189, Grove St, Los Angeles",
 };
-const tableData = ref(Array.from({ length: 20 }).fill(item));
 const user = useUser();
 const dialogVisible = ref(false);
 const data = ref(Date.now());
@@ -97,6 +99,17 @@ const getImg = async () => {
   imgUrl.value = url;
 };
 getImg();
+
+const handleKeyupSearch = (event: KeyboardEvent) => {
+  // 键盘按下 空格键 + q键
+  if (event.keyCode === 81 && event.shiftKey) {
+    layoutStore.setSearch(true);
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("keyup", handleKeyupSearch);
+});
 </script>
 
 <style lang="scss">

@@ -22,6 +22,7 @@ export default [
         children: [
           {
             path: "/wireless_scroll1",
+            isPage: true,
             name: "wireless_scroll1",
             component: () => import("../views/other/wireless_scroll/index.vue"),
             meta: {
@@ -32,6 +33,7 @@ export default [
           },
           {
             path: "/wireless_scroll_table",
+            isPage: true,
             name: "wireless_scroll_table",
             component: () =>
               import("../views/other/wireless_scroll/scroll_table.vue"),
@@ -55,6 +57,7 @@ export default [
         children: [
           {
             path: "/vue3/ref",
+            isPage: true,
             name: "vue3_ref",
             component: () => import("../views/other/vue3/ref.vue"),
             meta: {
@@ -67,6 +70,7 @@ export default [
       },
       {
         path: "/see_here",
+        isPage: true,
         name: "see_here",
         component: () => import("../views/other/seeHere/index.vue"),
         meta: {

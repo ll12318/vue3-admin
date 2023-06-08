@@ -11,13 +11,14 @@ export default [
     children: [
       {
         path: "/systemInfo",
+        isPage: true,
         name: "systemInfo",
         meta: {
-            title: "系统信息",
-            keepAlive: true,
+          title: "系统信息",
+          keepAlive: true,
         },
         component: () => import("@/views/system/ServerInfo.vue"),
-      }
+      },
     ],
   },
 ];
