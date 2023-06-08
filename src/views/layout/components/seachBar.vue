@@ -128,20 +128,37 @@ const handleKeyDownSwitch = (event: KeyboardEvent) => {
         list[activeIndex].classList.remove("active");
         if (activeIndex === list.length - 1) {
           list[0].classList.add("active");
+          list[0].scrollIntoView({ behavior: "smooth", block: "nearest" });
         } else {
           list[activeIndex + 1].classList.add("active");
+          list[activeIndex + 1].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         }
       }
     } else if (event.keyCode == 38) {
       // 上
       if (activeIndex === -1) {
         list[list.length - 1].classList.add("active");
+        list[list.length - 1].scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
       } else {
         list[activeIndex].classList.remove("active");
         if (activeIndex === 0) {
           list[list.length - 1].classList.add("active");
+          list[list.length - 1].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         } else {
           list[activeIndex - 1].classList.add("active");
+          list[activeIndex - 1].scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
         }
       }
     }
@@ -172,7 +189,8 @@ const handleClick = (event: MouseEvent) => {
   if (
     !target.closest(".search_bar") &&
     !target.closest(".search_btn") &&
-    !target.closest(".search_input")
+    !target.closest(".search_input") &&
+    !target.closest(".showSearch")
   ) {
     layoutStore.setSearch(false);
   }
@@ -217,6 +235,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
     width: 400px;
     height: 40px;
     border-radius: 6px;
+    font-size: 18px;
     border: 1px solid #ccc;
 
     padding: 0 20px;
@@ -236,7 +255,10 @@ const handleKeyDown = (event: KeyboardEvent) => {
     background-color: #fff;
     box-shadow: 0 0 10px #ccc;
     max-height: 50vh;
-    overflow-y: auto;
+    overflow-y: hidden;
+    &:hover {
+      overflow-y: auto;
+    }
 
     .list_item.active {
       background-color: #dfe2e6;

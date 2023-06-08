@@ -46,7 +46,9 @@
 
       <switch-theme></switch-theme>
 
-      <span style="cursor: pointer" @click="handleShowSearch">Tom</span>
+      <span class="showSearch" style="cursor: pointer" @click="handleShowSearch"
+        >Tom</span
+      >
     </div>
   </el-header>
 </template>
@@ -87,6 +89,7 @@ const visible = ref(false);
 const pwd = ref("");
 
 const handleShowSearch = () => {
+  console.log("handleShowSearch");
   layoutStore.setSearch(!layoutStore.getSearch);
 };
 </script>
