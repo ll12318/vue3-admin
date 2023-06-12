@@ -5,7 +5,7 @@
       @keyup="handleSearch"
       @keydown="handleKeyDown"
       class="search_input"
-      placeholder="请输入搜索内容 "
+      placeholder="请输入搜索内容"
     />
     <div class="list" v-if="searchValue.length">
       <div
