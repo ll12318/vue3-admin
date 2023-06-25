@@ -1,4 +1,3 @@
-import { id } from "element-plus/es/locale";
 import instance from "./request";
 export interface LoginData {
   username: string;

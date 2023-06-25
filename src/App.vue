@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { useThemeStore } from "./store/theme";
 import useCheckUpdates from "./hooks/useCheckUpdates";
 const themeStore = useThemeStore();
-useCheckUpdates();
+// useCheckUpdates();
 const light = {
   "--wk-bg": "#fff",
   "--wk-color-1": "#000",

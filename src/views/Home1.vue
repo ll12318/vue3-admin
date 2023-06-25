@@ -4,6 +4,13 @@
   >
     home1
   </div>
+  <div text-amber bg-blue w-200px h-200px flex justify-center items-center hover:bg-emerald ml-200px pt-100px>unocss</div>
+
+  <div flex justify-between h-200px bg-bluegray flex-wrap>
+    <div  m-10px flex justify-center items-center w-600px bg-amber>1</div>
+    <div  m-10px flex justify-center items-center w-600px bg-cyan>2</div>
+    <div  m-10px flex justify-center items-center w-600px bg-emerald>3</div>
+  </div>
 </template>
 <style>
 .a {
