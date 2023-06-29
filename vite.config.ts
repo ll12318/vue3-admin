@@ -18,6 +18,7 @@ export default defineConfig({
     },
   },
   server: {
+    host: "::", // 监听所有可用的IPv6地址
     proxy: {
       "/api": {
         target: "http://c.ll12138.icu:8181/",

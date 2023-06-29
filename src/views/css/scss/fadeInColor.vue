@@ -8,16 +8,25 @@
           <button class="btn" type-color="3" type-size="small">按钮3</button>
           <button class="btn" type-color="4" type-size="mini">按钮4</button>
           <button class="btn" disabled type-color="5" type-size="large">
-            按钮5
+            按钮5{{ num }}
           </button>
         </div>
       </template>
     </Card>
+    <div w-200 bg-red h-200 flex @click="handleClick">{{ click }}</div>
   </div>
 </template>
 
 <script lang="ts" setup name="fadeInColor">
+// @ts-ignore
 import Card from "../../../components/card.vue";
+import { ref } from "vue";
+const num = ref(1);
+const click = ref(false);
+const handleClick = () => {
+  console.log(213);
+  click.value = !click.value;
+};
 </script>
 
 <style lang="scss" scoped>
