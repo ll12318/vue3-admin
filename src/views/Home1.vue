@@ -12,6 +12,10 @@
     <div  m-10px flex justify-center items-center w-600px bg-emerald>3</div>
   </div>
 </template>
+
+<script lang="ts" setup>
+
+</script>
 <style>
 .a {
   background-color: aqua;

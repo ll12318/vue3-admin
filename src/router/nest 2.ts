@@ -14,6 +14,7 @@ export default [
     children: [
       {
         path: "/nest/",
+        isPage: true,
         name: "nest_home",
         meta: {
           title: "nest.js",
@@ -24,6 +25,7 @@ export default [
       },
       {
         path: "/nest/curd",
+        isPage: true,
         name: "nest_curd",
         meta: {
           title: "curd",
@@ -44,6 +46,7 @@ export default [
         children: [
           {
             path: "/nest/user/login",
+            isPage: true,
             name: "nest_user_login",
             meta: {
               title: "login",
@@ -54,6 +57,7 @@ export default [
             component: () => import("../views/nest/user/login.vue"),
           },
           {
+            isPage: true,
             path: "/nest/user",
             name: "nest_user_index",
             meta: {

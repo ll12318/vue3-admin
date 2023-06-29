@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue3_ref">
     <el-input placeholder="" ref="nameRef"></el-input>
   </div>
 </template>
