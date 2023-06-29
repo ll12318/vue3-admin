@@ -20,8 +20,12 @@
 </template>
 
 <script lang="ts" setup>
+// @ts-ignore
 import PublicOpinionAnalysis from "./publicOpinionAnalysis.vue";
+// @ts-ignore
 import ContentPublishingRatio from "./contentPublishingRatio.vue";
+// @ts-ignore
 import PopularAuthorList from "./popularAuthorList.vue";
+// @ts-ignore
 import ContentPeriodAnalysis from "./contentPeriodAnalysis.vue";
 </script>
