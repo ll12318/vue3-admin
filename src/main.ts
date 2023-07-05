@@ -7,6 +7,7 @@ import "element-plus/dist/index.css";
 import "element-plus/theme-chalk/dark/css-vars.css";
 import "uno.css";
 // @ts-ignore
+// 123
 window.version = "1.0.0";
 const app = createApp(App);
 app.use(router);
