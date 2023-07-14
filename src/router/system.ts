@@ -17,6 +17,15 @@ export default [
             keepAlive: true,
         },
         component: () => import("@/views/system/ServerInfo.vue"),
+      },
+      {
+        path: "/aida64",
+        name: "aida64",
+        meta: {
+            title: "aida64",
+            keepAlive: true,
+        },
+        component: () => import("@/views/system/aida64.vue"),
       }
     ],
   },

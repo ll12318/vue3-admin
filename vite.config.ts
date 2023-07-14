@@ -33,6 +33,13 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/nest2001/, ""),
       },
+
+      "/aida64":{
+        target: "http://192.168.1.12:8000/",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      }
     },
   },
 });
